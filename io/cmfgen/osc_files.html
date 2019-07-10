@@ -1,0 +1,2137 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Energy levels and oscillator strengths &mdash; Carsus v</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Collisional strengths" href="col_files.html" />
+    <link rel="prev" title="CMFGEN" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Carsus
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data_sources.html">Datasets</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">CMFGEN</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Energy levels and oscillator strengths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="col_files.html">Collisional strengths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pho_files.html">Photoionization cross-sections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kurucz/index.html">Kurucz Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nist/index.html">NIST</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Reference/API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model.html">Database Models in carsus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../macroatom.html">Macro Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/kurucz_chianti_h_he.html">Creating the tardis_example database</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Carsus</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../data_sources.html">Datasets</a> &raquo;</li>
+        
+          <li><a href="index.html">CMFGEN</a> &raquo;</li>
+        
+      <li>Energy levels and oscillator strengths</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/io/cmfgen/osc_files.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Energy-levels-and-oscillator-strengths">
+<h1>Energy levels and oscillator strengths<a class="headerlink" href="#Energy-levels-and-oscillator-strengths" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.cmfgen</span> <span class="k">import</span> <span class="n">CMFGENEnergyLevelsParser</span><span class="p">,</span> <span class="n">CMFGENOscillatorStrengthsParser</span>
+</pre></div>
+</div>
+</div>
+<p>Download and extract CMFGEN Atomic Data from <a class="reference external" href="http://kookaburra.phyast.pitt.edu/hillier/web/CMFGEN.htm">http://kookaburra.phyast.pitt.edu/hillier/web/CMFGEN.htm</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_energy_levels</span> <span class="o">=</span> <span class="n">CMFGENEnergyLevelsParser</span><span class="p">(</span><span class="s1">&#39;./atomic/SIL/II/16sep15/si2_osc_kurucz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The resulting table is stored as a DataFrame in the <em>base</em> attribute. Header information is saved as a dictionary in <em>meta</em> attribute.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_energy_levels</span><span class="o">.</span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>{&#39;Date&#39;: &#39;16-Sep-2015&#39;,
+ &#39;Format date&#39;: &#39;17-Jun-2014&#39;,
+ &#39;Number of energy levels&#39;: &#39;157&#39;,
+ &#39;Ionization energy&#39;: &#39;131838.1400&#39;,
+ &#39;Screened nuclear charge&#39;: &#39;2.0&#39;,
+ &#39;Number of transitions&#39;: &#39;4196&#39;}
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_energy_levels</span><span class="o">.</span><span class="n">base</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Configuration</th>
+      <th>g</th>
+      <th>E(cm^-1)</th>
+      <th>10^15 Hz</th>
+      <th>eV</th>
+      <th>Lam(A)</th>
+      <th>ID</th>
+      <th>ARAD</th>
+      <th>C4</th>
+      <th>C6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>2.0</td>
+      <td>0.000000</td>
+      <td>3.95241</td>
+      <td>16.346</td>
+      <td>758.5</td>
+      <td>1</td>
+      <td>0.000000e+00</td>
+      <td>-5.290000e-17</td>
+      <td>7.470000e-33</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3s2_3p_2Po[3/2]</td>
+      <td>4.0</td>
+      <td>287.240000</td>
+      <td>3.94380</td>
+      <td>16.310</td>
+      <td>760.2</td>
+      <td>2</td>
+      <td>0.000000e+00</td>
+      <td>-5.300000e-17</td>
+      <td>7.460000e-33</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3s_3p2_4Pe[1/2]</td>
+      <td>2.0</td>
+      <td>42824.290000</td>
+      <td>2.66857</td>
+      <td>11.036</td>
+      <td>1123.0</td>
+      <td>3</td>
+      <td>1.222000e+04</td>
+      <td>-5.340000e-17</td>
+      <td>7.490000e-33</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3s_3p2_4Pe[3/2]</td>
+      <td>4.0</td>
+      <td>42932.620000</td>
+      <td>2.66532</td>
+      <td>11.023</td>
+      <td>1125.0</td>
+      <td>4</td>
+      <td>2.110000e+03</td>
+      <td>-5.340000e-17</td>
+      <td>7.490000e-33</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3s_3p2_4Pe[5/2]</td>
+      <td>6.0</td>
+      <td>43107.910000</td>
+      <td>2.66007</td>
+      <td>11.001</td>
+      <td>1127.0</td>
+      <td>5</td>
+      <td>3.246000e+03</td>
+      <td>-5.350000e-17</td>
+      <td>7.490000e-33</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3s_3p2_2De[3/2]</td>
+      <td>4.0</td>
+      <td>55309.350000</td>
+      <td>2.29428</td>
+      <td>9.488</td>
+      <td>1307.0</td>
+      <td>6</td>
+      <td>8.386000e+05</td>
+      <td>-6.480000e-17</td>
+      <td>7.660000e-33</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3s_3p2_2De[5/2]</td>
+      <td>6.0</td>
+      <td>55325.180000</td>
+      <td>2.29380</td>
+      <td>9.486</td>
+      <td>1307.0</td>
+      <td>7</td>
+      <td>7.986000e+05</td>
+      <td>-6.480000e-17</td>
+      <td>7.660000e-33</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3s2_4s_2Se[1/2]</td>
+      <td>2.0</td>
+      <td>65500.470000</td>
+      <td>1.98875</td>
+      <td>8.225</td>
+      <td>1507.0</td>
+      <td>8</td>
+      <td>1.087000e+09</td>
+      <td>-6.790000e-16</td>
+      <td>2.030000e-32</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3s_3p2_2Se[1/2]</td>
+      <td>2.0</td>
+      <td>76665.350000</td>
+      <td>1.65404</td>
+      <td>6.841</td>
+      <td>1812.0</td>
+      <td>9</td>
+      <td>1.111000e+09</td>
+      <td>-9.140000e-17</td>
+      <td>1.130000e-32</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3s2_3d_2De[3/2]</td>
+      <td>4.0</td>
+      <td>79338.500000</td>
+      <td>1.57390</td>
+      <td>6.509</td>
+      <td>1905.0</td>
+      <td>10</td>
+      <td>3.597000e+09</td>
+      <td>-1.210000e-15</td>
+      <td>1.600000e-32</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3s2_3d_2De[5/2]</td>
+      <td>6.0</td>
+      <td>79355.020000</td>
+      <td>1.57340</td>
+      <td>6.507</td>
+      <td>1905.0</td>
+      <td>11</td>
+      <td>3.565000e+09</td>
+      <td>-1.200000e-15</td>
+      <td>1.600000e-32</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3s2_4p_2Po[1/2]</td>
+      <td>2.0</td>
+      <td>81191.340000</td>
+      <td>1.51835</td>
+      <td>6.279</td>
+      <td>1974.0</td>
+      <td>12</td>
+      <td>1.193000e+08</td>
+      <td>1.540000e-15</td>
+      <td>2.900000e-32</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3s2_4p_2Po[3/2]</td>
+      <td>4.0</td>
+      <td>81251.320000</td>
+      <td>1.51655</td>
+      <td>6.272</td>
+      <td>1977.0</td>
+      <td>13</td>
+      <td>1.204000e+08</td>
+      <td>1.490000e-15</td>
+      <td>2.900000e-32</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3s_3p2_2Pe[1/2]</td>
+      <td>2.0</td>
+      <td>83801.950000</td>
+      <td>1.44009</td>
+      <td>5.956</td>
+      <td>2082.0</td>
+      <td>14</td>
+      <td>4.245000e+09</td>
+      <td>-7.640000e-17</td>
+      <td>1.390000e-32</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3s_3p2_2Pe[3/2]</td>
+      <td>4.0</td>
+      <td>84004.260000</td>
+      <td>1.43402</td>
+      <td>5.931</td>
+      <td>2091.0</td>
+      <td>15</td>
+      <td>4.256000e+09</td>
+      <td>-7.640000e-17</td>
+      <td>1.390000e-32</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>3s2_5s_2Se[1/2]</td>
+      <td>2.0</td>
+      <td>97972.090000</td>
+      <td>1.01528</td>
+      <td>4.199</td>
+      <td>2953.0</td>
+      <td>16</td>
+      <td>4.281000e+08</td>
+      <td>-5.930000e-15</td>
+      <td>7.250000e-32</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3s2_4d_2De[3/2]</td>
+      <td>4.0</td>
+      <td>101023.050000</td>
+      <td>0.92381</td>
+      <td>3.821</td>
+      <td>3245.0</td>
+      <td>17</td>
+      <td>7.767000e+08</td>
+      <td>-8.970000e-15</td>
+      <td>5.680000e-32</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>3s2_4d_2De[5/2]</td>
+      <td>6.0</td>
+      <td>101024.350000</td>
+      <td>0.92377</td>
+      <td>3.820</td>
+      <td>3245.0</td>
+      <td>18</td>
+      <td>7.704000e+08</td>
+      <td>-8.950000e-15</td>
+      <td>5.680000e-32</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>3s2_4f_2Fo[7/2]</td>
+      <td>8.0</td>
+      <td>103556.030000</td>
+      <td>0.84788</td>
+      <td>3.507</td>
+      <td>3536.0</td>
+      <td>19</td>
+      <td>3.413000e+08</td>
+      <td>2.460000e-15</td>
+      <td>5.500000e-32</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3s2_4f_2Fo[5/2]</td>
+      <td>6.0</td>
+      <td>103556.160000</td>
+      <td>0.84787</td>
+      <td>3.507</td>
+      <td>3536.0</td>
+      <td>20</td>
+      <td>3.419000e+08</td>
+      <td>2.460000e-15</td>
+      <td>5.500000e-32</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3s2_5p_2Po[1/2]</td>
+      <td>2.0</td>
+      <td>103860.740000</td>
+      <td>0.83874</td>
+      <td>3.469</td>
+      <td>3574.0</td>
+      <td>21</td>
+      <td>4.928000e+07</td>
+      <td>4.060000e-15</td>
+      <td>9.520000e-32</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3s2_5p_2Po[3/2]</td>
+      <td>4.0</td>
+      <td>103885.250000</td>
+      <td>0.83801</td>
+      <td>3.466</td>
+      <td>3577.0</td>
+      <td>22</td>
+      <td>4.926000e+07</td>
+      <td>4.000000e-15</td>
+      <td>9.520000e-32</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3s_3p(3Po)3d_2Do[3/2]</td>
+      <td>4.0</td>
+      <td>108778.700000</td>
+      <td>0.69130</td>
+      <td>2.859</td>
+      <td>4337.0</td>
+      <td>23</td>
+      <td>7.174000e+05</td>
+      <td>-6.880000e-17</td>
+      <td>6.780000e-33</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3s_3p(3Po)3d_2Do[5/2]</td>
+      <td>6.0</td>
+      <td>108820.600000</td>
+      <td>0.69005</td>
+      <td>2.854</td>
+      <td>4345.0</td>
+      <td>24</td>
+      <td>7.023000e+05</td>
+      <td>-6.880000e-17</td>
+      <td>6.780000e-33</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3s2_6s_2Se[1/2]</td>
+      <td>2.0</td>
+      <td>111184.460000</td>
+      <td>0.61918</td>
+      <td>2.561</td>
+      <td>4842.0</td>
+      <td>25</td>
+      <td>2.222000e+08</td>
+      <td>-3.090000e-14</td>
+      <td>1.910000e-31</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>3s2_5d_2De[3/2]</td>
+      <td>4.0</td>
+      <td>112394.560000</td>
+      <td>0.58290</td>
+      <td>2.411</td>
+      <td>5143.0</td>
+      <td>26</td>
+      <td>2.210000e+08</td>
+      <td>-5.160000e-14</td>
+      <td>1.650000e-31</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>3s2_5d_2De[5/2]</td>
+      <td>6.0</td>
+      <td>112394.720000</td>
+      <td>0.58290</td>
+      <td>2.411</td>
+      <td>5143.0</td>
+      <td>27</td>
+      <td>2.195000e+08</td>
+      <td>-5.150000e-14</td>
+      <td>1.650000e-31</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>3s2_5f_2Fo[7/2]</td>
+      <td>8.0</td>
+      <td>113760.150000</td>
+      <td>0.54196</td>
+      <td>2.241</td>
+      <td>5532.0</td>
+      <td>28</td>
+      <td>1.945000e+08</td>
+      <td>-4.730000e-14</td>
+      <td>1.700000e-31</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>3s2_5f_2Fo[5/2]</td>
+      <td>6.0</td>
+      <td>113760.320000</td>
+      <td>0.54196</td>
+      <td>2.241</td>
+      <td>5532.0</td>
+      <td>29</td>
+      <td>1.945000e+08</td>
+      <td>-4.740000e-14</td>
+      <td>1.700000e-31</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3s2_6p_2Po[1/2]</td>
+      <td>2.0</td>
+      <td>113962.080000</td>
+      <td>0.53591</td>
+      <td>2.216</td>
+      <td>5594.0</td>
+      <td>30</td>
+      <td>6.115000e+07</td>
+      <td>2.530000e-14</td>
+      <td>2.300000e-31</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>3s2_15w_2W</td>
+      <td>450.0</td>
+      <td>129887.292486</td>
+      <td>0.05848</td>
+      <td>0.242</td>
+      <td>51260.0</td>
+      <td>-128</td>
+      <td>1.266000e+06</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>3s2_16w_2W</td>
+      <td>512.0</td>
+      <td>130123.527928</td>
+      <td>0.05140</td>
+      <td>0.213</td>
+      <td>58320.0</td>
+      <td>-129</td>
+      <td>9.354000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>3s2_17w_2W</td>
+      <td>578.0</td>
+      <td>130319.314081</td>
+      <td>0.04553</td>
+      <td>0.188</td>
+      <td>65840.0</td>
+      <td>-130</td>
+      <td>7.043000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>3s2_18w_2W</td>
+      <td>648.0</td>
+      <td>130483.384782</td>
+      <td>0.04061</td>
+      <td>0.168</td>
+      <td>73810.0</td>
+      <td>-131</td>
+      <td>5.391000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>3s2_19w_2W</td>
+      <td>722.0</td>
+      <td>130622.237810</td>
+      <td>0.03645</td>
+      <td>0.151</td>
+      <td>82240.0</td>
+      <td>-132</td>
+      <td>4.187000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>3s2_20w_2W</td>
+      <td>800.0</td>
+      <td>130740.788274</td>
+      <td>0.03290</td>
+      <td>0.136</td>
+      <td>91130.0</td>
+      <td>-133</td>
+      <td>3.294000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>3s2_21w_2W</td>
+      <td>882.0</td>
+      <td>130842.809636</td>
+      <td>0.02984</td>
+      <td>0.123</td>
+      <td>100500.0</td>
+      <td>-134</td>
+      <td>2.622000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>3s2_22w_2W</td>
+      <td>968.0</td>
+      <td>130931.237747</td>
+      <td>0.02719</td>
+      <td>0.112</td>
+      <td>110300.0</td>
+      <td>-135</td>
+      <td>2.109000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>3s2_23w_2W</td>
+      <td>1058.0</td>
+      <td>131008.384441</td>
+      <td>0.02488</td>
+      <td>0.103</td>
+      <td>120500.0</td>
+      <td>-136</td>
+      <td>1.713000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>3s2_24w_2W</td>
+      <td>1152.0</td>
+      <td>131076.090190</td>
+      <td>0.02285</td>
+      <td>0.094</td>
+      <td>131200.0</td>
+      <td>-137</td>
+      <td>1.404000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>3s2_25w_2W</td>
+      <td>1250.0</td>
+      <td>131135.834895</td>
+      <td>0.02105</td>
+      <td>0.087</td>
+      <td>142400.0</td>
+      <td>-138</td>
+      <td>1.160000e+05</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>3s2_26w_2W</td>
+      <td>1352.0</td>
+      <td>131188.819452</td>
+      <td>0.01947</td>
+      <td>0.081</td>
+      <td>154000.0</td>
+      <td>-139</td>
+      <td>9.650000e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>3s2_27w_2W</td>
+      <td>1458.0</td>
+      <td>131236.026570</td>
+      <td>0.01805</td>
+      <td>0.075</td>
+      <td>166100.0</td>
+      <td>-140</td>
+      <td>8.085000e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>3s2_28w_2W</td>
+      <td>1568.0</td>
+      <td>131278.266670</td>
+      <td>0.01678</td>
+      <td>0.069</td>
+      <td>178600.0</td>
+      <td>-141</td>
+      <td>6.817000e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>3s2_29w_2W</td>
+      <td>1682.0</td>
+      <td>131316.212901</td>
+      <td>0.01565</td>
+      <td>0.065</td>
+      <td>191600.0</td>
+      <td>-142</td>
+      <td>5.782000e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>3s2_30w_2W</td>
+      <td>1800.0</td>
+      <td>131350.428122</td>
+      <td>0.01462</td>
+      <td>0.060</td>
+      <td>205000.0</td>
+      <td>-143</td>
+      <td>4.931000e+04</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>6.0</td>
+      <td>131677.100000</td>
+      <td>0.00483</td>
+      <td>0.020</td>
+      <td>621000.0</td>
+      <td>144</td>
+      <td>1.692000e+09</td>
+      <td>-6.070000e-16</td>
+      <td>1.460000e-32</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>3s_3p(3Po)4p_4De[1/2]</td>
+      <td>2.0</td>
+      <td>131784.900000</td>
+      <td>0.00160</td>
+      <td>0.007</td>
+      <td>1878000.0</td>
+      <td>145</td>
+      <td>9.946000e+07</td>
+      <td>-1.230000e-16</td>
+      <td>2.650000e-32</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>3s_3p(3Po)4p_4De[3/2]</td>
+      <td>4.0</td>
+      <td>131861.930000</td>
+      <td>-0.00071</td>
+      <td>-0.003</td>
+      <td>-4203000.0</td>
+      <td>146</td>
+      <td>9.981000e+07</td>
+      <td>-1.210000e-16</td>
+      <td>2.650000e-32</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>3s_3p(3Po)3d_2Fo[7/2]</td>
+      <td>8.0</td>
+      <td>131918.800000</td>
+      <td>-0.00242</td>
+      <td>-0.010</td>
+      <td>-1240000.0</td>
+      <td>147</td>
+      <td>1.717000e+09</td>
+      <td>-6.350000e-16</td>
+      <td>1.470000e-32</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>3s_3p(3Po)4p_4De[5/2]</td>
+      <td>6.0</td>
+      <td>131988.050000</td>
+      <td>-0.00449</td>
+      <td>-0.019</td>
+      <td>-667100.0</td>
+      <td>148</td>
+      <td>1.002000e+08</td>
+      <td>-1.180000e-16</td>
+      <td>2.650000e-32</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>3s_3p(3Po)4p_4De[7/2]</td>
+      <td>8.0</td>
+      <td>132162.290000</td>
+      <td>-0.00972</td>
+      <td>-0.040</td>
+      <td>-308500.0</td>
+      <td>149</td>
+      <td>1.008000e+08</td>
+      <td>-1.240000e-16</td>
+      <td>2.650000e-32</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>3s_3p(3Po)4p_2Pe[1/2]</td>
+      <td>2.0</td>
+      <td>132592.100000</td>
+      <td>-0.02260</td>
+      <td>-0.093</td>
+      <td>-132600.0</td>
+      <td>150</td>
+      <td>1.063000e+08</td>
+      <td>-5.430000e-16</td>
+      <td>2.690000e-32</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>3s_3p(3Po)4p_2Pe[3/2]</td>
+      <td>4.0</td>
+      <td>132676.200000</td>
+      <td>-0.02512</td>
+      <td>-0.104</td>
+      <td>-119300.0</td>
+      <td>151</td>
+      <td>1.060000e+08</td>
+      <td>-5.480000e-16</td>
+      <td>2.690000e-32</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>3s_3p(3Po)4p_4Pe[1/2]</td>
+      <td>2.0</td>
+      <td>134016.900000</td>
+      <td>-0.06532</td>
+      <td>-0.270</td>
+      <td>-45900.0</td>
+      <td>152</td>
+      <td>1.161000e+08</td>
+      <td>-1.490000e-16</td>
+      <td>3.090000e-32</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>3s_3p(3Po)4p_4Pe[3/2]</td>
+      <td>4.0</td>
+      <td>134079.000000</td>
+      <td>-0.06718</td>
+      <td>-0.278</td>
+      <td>-44630.0</td>
+      <td>153</td>
+      <td>1.159000e+08</td>
+      <td>-1.500000e-16</td>
+      <td>3.080000e-32</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>3s_3p(3Po)4p_4Pe[5/2]</td>
+      <td>6.0</td>
+      <td>134213.630000</td>
+      <td>-0.07122</td>
+      <td>-0.295</td>
+      <td>-42100.0</td>
+      <td>154</td>
+      <td>1.167000e+08</td>
+      <td>-1.500000e-16</td>
+      <td>3.090000e-32</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>3s_3p(3Po)4p_4Se[3/2]</td>
+      <td>4.0</td>
+      <td>134905.280000</td>
+      <td>-0.09195</td>
+      <td>-0.380</td>
+      <td>-32600.0</td>
+      <td>155</td>
+      <td>9.275000e+07</td>
+      <td>-9.750000e-17</td>
+      <td>2.770000e-32</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>3p3_2Do[5/2]</td>
+      <td>6.0</td>
+      <td>135297.300000</td>
+      <td>-0.10370</td>
+      <td>-0.429</td>
+      <td>-28910.0</td>
+      <td>156</td>
+      <td>2.437000e+09</td>
+      <td>4.200000e-17</td>
+      <td>1.450000e-32</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>3p3_2Do[3/2]</td>
+      <td>4.0</td>
+      <td>135303.500000</td>
+      <td>-0.10389</td>
+      <td>-0.430</td>
+      <td>-28860.0</td>
+      <td>157</td>
+      <td>2.438000e+09</td>
+      <td>1.390000e-17</td>
+      <td>1.460000e-32</td>
+    </tr>
+  </tbody>
+</table>
+<p>157 rows × 10 columns</p>
+</div></div>
+</div>
+<p>Same goes for the oscillator strengths table.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_osc_strengths</span> <span class="o">=</span> <span class="n">CMFGENOscillatorStrengthsParser</span><span class="p">(</span><span class="s1">&#39;./atomic/SIL/II/16sep15/si2_osc_kurucz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_osc_strengths</span><span class="o">.</span><span class="n">base</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>State A</th>
+      <th>State B</th>
+      <th>f</th>
+      <th>A</th>
+      <th>Lam(A)</th>
+      <th>i</th>
+      <th>j</th>
+      <th>Lam(obs)</th>
+      <th>% Acc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_4Pe[1/2]</td>
+      <td>5.741000e-06</td>
+      <td>7.023000e+03</td>
+      <td>2335.123</td>
+      <td>1</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_4Pe[3/2]</td>
+      <td>3.564000e-08</td>
+      <td>2.191000e+01</td>
+      <td>2329.231</td>
+      <td>1</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_2De[3/2]</td>
+      <td>7.638000e-04</td>
+      <td>7.793000e+05</td>
+      <td>1808.013</td>
+      <td>1</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_4s_2Se[1/2]</td>
+      <td>1.279000e-01</td>
+      <td>3.661000e+08</td>
+      <td>1526.707</td>
+      <td>1</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_2Se[1/2]</td>
+      <td>1.062000e-01</td>
+      <td>4.162000e+08</td>
+      <td>1304.370</td>
+      <td>1</td>
+      <td>9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_3d_2De[3/2]</td>
+      <td>1.449000e+00</td>
+      <td>3.041000e+09</td>
+      <td>1260.422</td>
+      <td>1</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_2Pe[1/2]</td>
+      <td>5.942000e-01</td>
+      <td>2.784000e+09</td>
+      <td>1193.290</td>
+      <td>1</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s_3p2_2Pe[3/2]</td>
+      <td>2.844000e-01</td>
+      <td>6.694000e+08</td>
+      <td>1190.416</td>
+      <td>1</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_5s_2Se[1/2]</td>
+      <td>1.603000e-02</td>
+      <td>1.026000e+08</td>
+      <td>1020.699</td>
+      <td>1</td>
+      <td>16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_4d_2De[3/2]</td>
+      <td>1.469000e-01</td>
+      <td>4.999000e+08</td>
+      <td>989.873</td>
+      <td>1</td>
+      <td>17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_6s_2Se[1/2]</td>
+      <td>5.636000e-03</td>
+      <td>4.647000e+07</td>
+      <td>899.406</td>
+      <td>1</td>
+      <td>25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_5d_2De[3/2]</td>
+      <td>2.667000e-02</td>
+      <td>1.124000e+08</td>
+      <td>889.723</td>
+      <td>1</td>
+      <td>26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_7s_2Se[1/2]</td>
+      <td>2.661000e-03</td>
+      <td>2.467000e+07</td>
+      <td>848.070</td>
+      <td>1</td>
+      <td>41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_6d_2De[3/2]</td>
+      <td>8.222000e-03</td>
+      <td>3.852000e+07</td>
+      <td>843.719</td>
+      <td>1</td>
+      <td>42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_8s_2Se[1/2]</td>
+      <td>1.472000e-03</td>
+      <td>1.457000e+07</td>
+      <td>820.921</td>
+      <td>1</td>
+      <td>54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_7d_2De[3/2]</td>
+      <td>3.412000e-03</td>
+      <td>1.698000e+07</td>
+      <td>818.575</td>
+      <td>1</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_9s_2Se[1/2]</td>
+      <td>8.994000e-04</td>
+      <td>9.266000e+06</td>
+      <td>804.656</td>
+      <td>1</td>
+      <td>68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_8d_2De[3/2]</td>
+      <td>1.690000e-03</td>
+      <td>8.737000e+06</td>
+      <td>803.241</td>
+      <td>1</td>
+      <td>74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_10s_2Se[1/2]</td>
+      <td>5.861000e-04</td>
+      <td>6.196000e+06</td>
+      <td>794.358</td>
+      <td>1</td>
+      <td>89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_9d_2De[3/2]</td>
+      <td>9.375000e-04</td>
+      <td>4.967000e+06</td>
+      <td>793.416</td>
+      <td>1</td>
+      <td>90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_11s_2Se[1/2]</td>
+      <td>3.981000e-04</td>
+      <td>4.286000e+06</td>
+      <td>787.073</td>
+      <td>1</td>
+      <td>105</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_10d_2De[3/2]</td>
+      <td>5.508000e-04</td>
+      <td>2.970000e+06</td>
+      <td>786.423</td>
+      <td>1</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_11d_2De</td>
+      <td>3.945000e-04</td>
+      <td>8.623000e+05</td>
+      <td>781.224</td>
+      <td>1</td>
+      <td>117</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_12w_2W</td>
+      <td>5.902000e-04</td>
+      <td>4.535000e+04</td>
+      <td>776.458</td>
+      <td>1</td>
+      <td>125</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_13w_2W</td>
+      <td>4.507000e-04</td>
+      <td>2.971000e+04</td>
+      <td>773.749</td>
+      <td>1</td>
+      <td>126</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_14w_2W</td>
+      <td>3.526000e-04</td>
+      <td>2.015000e+04</td>
+      <td>771.613</td>
+      <td>1</td>
+      <td>127</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_15w_2W</td>
+      <td>2.814000e-04</td>
+      <td>1.407000e+04</td>
+      <td>769.898</td>
+      <td>1</td>
+      <td>128</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_16w_2W</td>
+      <td>2.283000e-04</td>
+      <td>1.007000e+04</td>
+      <td>768.501</td>
+      <td>1</td>
+      <td>129</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_17w_2W</td>
+      <td>1.880000e-04</td>
+      <td>7.369000e+03</td>
+      <td>767.346</td>
+      <td>1</td>
+      <td>130</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3s2_3p_2Po[1/2]</td>
+      <td>3s2_18w_2W</td>
+      <td>1.567000e-04</td>
+      <td>5.493000e+03</td>
+      <td>766.381</td>
+      <td>1</td>
+      <td>131</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4166</th>
+      <td>3s2_27w_2W</td>
+      <td>3s2_30w_2W</td>
+      <td>2.551000e-01</td>
+      <td>1.804000e+03</td>
+      <td>874100.000</td>
+      <td>140</td>
+      <td>143</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4167</th>
+      <td>3s2_28w_2W</td>
+      <td>3s2_29w_2W</td>
+      <td>5.627000e+00</td>
+      <td>5.038000e+03</td>
+      <td>2635000.000</td>
+      <td>141</td>
+      <td>142</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4168</th>
+      <td>3s2_28w_2W</td>
+      <td>3s2_30w_2W</td>
+      <td>8.159000e-01</td>
+      <td>2.469000e+03</td>
+      <td>1386000.000</td>
+      <td>141</td>
+      <td>143</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4169</th>
+      <td>3s2_29w_2W</td>
+      <td>3s2_30w_2W</td>
+      <td>5.817000e+00</td>
+      <td>4.245000e+03</td>
+      <td>2923000.000</td>
+      <td>142</td>
+      <td>143</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4170</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4De[3/2]</td>
+      <td>6.681000e-08</td>
+      <td>2.284000e-03</td>
+      <td>541000.000</td>
+      <td>144</td>
+      <td>146</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4171</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4De[5/2]</td>
+      <td>3.952000e-08</td>
+      <td>2.549000e-03</td>
+      <td>321600.000</td>
+      <td>144</td>
+      <td>148</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4172</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4De[7/2]</td>
+      <td>4.930000e-10</td>
+      <td>5.806000e-05</td>
+      <td>206100.000</td>
+      <td>144</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4173</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_2Pe[3/2]</td>
+      <td>1.402000e-05</td>
+      <td>1.401000e+01</td>
+      <td>100100.000</td>
+      <td>144</td>
+      <td>151</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4174</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4Pe[3/2]</td>
+      <td>1.462000e-06</td>
+      <td>8.437000e+00</td>
+      <td>41633.707</td>
+      <td>144</td>
+      <td>153</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4175</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4Pe[5/2]</td>
+      <td>9.882000e-07</td>
+      <td>4.241000e+00</td>
+      <td>39423.937</td>
+      <td>144</td>
+      <td>154</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4176</th>
+      <td>3s_3p(3Po)3d_2Fo[5/2]</td>
+      <td>3s_3p(3Po)4p_4Se[3/2]</td>
+      <td>5.713000e-07</td>
+      <td>5.957000e+00</td>
+      <td>30977.207</td>
+      <td>144</td>
+      <td>155</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4177</th>
+      <td>3s_3p(3Po)4p_4De[1/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>6.251000e-04</td>
+      <td>2.581000e+03</td>
+      <td>28420.394</td>
+      <td>145</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4178</th>
+      <td>3s_3p(3Po)4p_4De[3/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>2.483000e-04</td>
+      <td>1.303000e+03</td>
+      <td>29108.946</td>
+      <td>146</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4179</th>
+      <td>3s_3p(3Po)4p_4De[3/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>2.799000e-05</td>
+      <td>2.211000e+02</td>
+      <td>29056.506</td>
+      <td>146</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4180</th>
+      <td>3s_3p(3Po)3d_2Fo[7/2]</td>
+      <td>3s_3p(3Po)4p_4De[5/2]</td>
+      <td>8.911000e-08</td>
+      <td>3.800000e-04</td>
+      <td>1444000.000</td>
+      <td>147</td>
+      <td>148</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4181</th>
+      <td>3s_3p(3Po)3d_2Fo[7/2]</td>
+      <td>3s_3p(3Po)4p_4De[7/2]</td>
+      <td>4.976000e-09</td>
+      <td>1.968000e-04</td>
+      <td>410700.000</td>
+      <td>147</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4182</th>
+      <td>3s_3p(3Po)3d_2Fo[7/2]</td>
+      <td>3s_3p(3Po)4p_4Pe[5/2]</td>
+      <td>1.415000e-05</td>
+      <td>6.630000e+01</td>
+      <td>43576.213</td>
+      <td>147</td>
+      <td>154</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4183</th>
+      <td>3s_3p(3Po)4p_4De[5/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>9.973000e-08</td>
+      <td>7.285000e-01</td>
+      <td>30218.327</td>
+      <td>148</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4184</th>
+      <td>3s_3p(3Po)4p_4De[5/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>2.896000e-08</td>
+      <td>3.185000e-01</td>
+      <td>30161.818</td>
+      <td>148</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4185</th>
+      <td>3s_3p(3Po)4p_4De[7/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>3.697000e-08</td>
+      <td>3.232000e-01</td>
+      <td>31897.825</td>
+      <td>149</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4186</th>
+      <td>3s_3p(3Po)4p_2Pe[1/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>3.396000e-02</td>
+      <td>8.327000e+04</td>
+      <td>36881.316</td>
+      <td>150</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4187</th>
+      <td>3s_3p(3Po)4p_2Pe[3/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>2.937000e-02</td>
+      <td>8.973000e+04</td>
+      <td>38151.921</td>
+      <td>151</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4188</th>
+      <td>3s_3p(3Po)4p_2Pe[3/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>2.930000e-03</td>
+      <td>1.349000e+04</td>
+      <td>38061.889</td>
+      <td>151</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4189</th>
+      <td>3s_3p(3Po)4p_4Pe[1/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>5.520000e-06</td>
+      <td>3.048000e+00</td>
+      <td>77724.234</td>
+      <td>152</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4190</th>
+      <td>3s_3p(3Po)4p_4Pe[3/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>2.065000e-05</td>
+      <td>1.363000e+01</td>
+      <td>82081.589</td>
+      <td>153</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4191</th>
+      <td>3s_3p(3Po)4p_4Pe[3/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>3.250000e-06</td>
+      <td>3.251000e+00</td>
+      <td>81665.986</td>
+      <td>153</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4192</th>
+      <td>3s_3p(3Po)4p_4Pe[5/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>6.605000e-07</td>
+      <td>5.173000e-01</td>
+      <td>92279.015</td>
+      <td>154</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4193</th>
+      <td>3s_3p(3Po)4p_4Pe[5/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>4.129000e-08</td>
+      <td>4.907000e-02</td>
+      <td>91754.062</td>
+      <td>154</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4194</th>
+      <td>3s_3p(3Po)4p_4Se[3/2]</td>
+      <td>3p3_2Do[5/2]</td>
+      <td>7.673000e-06</td>
+      <td>5.243000e-01</td>
+      <td>255100.000</td>
+      <td>155</td>
+      <td>156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4195</th>
+      <td>3s_3p(3Po)4p_4Se[3/2]</td>
+      <td>3p3_2Do[3/2]</td>
+      <td>6.744000e-07</td>
+      <td>7.134000e-02</td>
+      <td>251100.000</td>
+      <td>155</td>
+      <td>157</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4196 rows × 9 columns</p>
+</div></div>
+</div>
+<p>You can easily dump the data inside an HDF5 file. For example:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">si2_energy_levels</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">()</span>
+<span class="n">si2_energy_levels</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>will result in a <code class="docutils literal notranslate"><span class="pre">si2_osc_kurucz.h5</span></code> file located in the same path and containing both tables and header information.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="col_files.html" class="btn btn-neutral float-right" title="Collisional strengths" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="CMFGEN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, TARDIS team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
