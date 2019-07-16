@@ -87,9 +87,9 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Prerequisites:">Prerequisites:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Creating-a-database">Creating a database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Creating-output-HDFStores">Creating output HDFStores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Creating-output-HDF5-files">Creating output HDF5 files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/data_sources.html">Datasets</a></li>
@@ -386,24 +386,23 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Quickstart">
 <h1>Quickstart<a class="headerlink" href="#Quickstart" title="Permalink to this headline">¶</a></h1>
 <p>This notebook provides a quick introduction in how to use Carsus.</p>
-<div class="section" id="Prerequisites:">
-<h2>Prerequisites:<a class="headerlink" href="#Prerequisites:" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#Prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Install carsus (preferably as a git repository)</p></li>
-<li><p>Install ChiantiPy (from source or pip, both versions work)</p></li>
-<li><p>Install chiantipy and set the environmentvariable <code class="docutils literal notranslate"><span class="pre">XUVTOP</span> <span class="pre">=</span> <span class="pre">/path/to/chianti/root</span></code></p></li>
-<li><p>We highly recommend installing the <code class="docutils literal notranslate"><span class="pre">carsus-db</span></code> repository as it includes the files of several sources that cannot easily be downloaded.</p></li>
+<li><p>Install Carsus (preferably as a <code class="docutils literal notranslate"><span class="pre">git</span></code> repository)</p></li>
+<li><p>Install ChiantiPy (from source or <code class="docutils literal notranslate"><span class="pre">pip</span></code>, both versions work) and set the environment variable <code class="docutils literal notranslate"><span class="pre">XUVTOP</span> <span class="pre">=</span> <span class="pre">/path/to/chianti/root</span></code></p></li>
+<li><p>We highly recommend installing the <code class="docutils literal notranslate"><span class="pre">carsus-db</span></code> repository as it includes the files of several sources that cannot easily be downloaded</p></li>
 </ul>
 </div>
 <div class="section" id="Creating-a-database">
 <h2>Creating a database<a class="headerlink" href="#Creating-a-database" title="Permalink to this headline">¶</a></h2>
-<p>To start working with a database you need to initialize it. This requires a url, for example <code class="docutils literal notranslate"><span class="pre">sqlite:///path/to/example.db</span></code>. In this quickstart, we’ll use a in-memory sqlite database, so we leave the url empty:</p>
+<p>To start working with a database you need to initialize it. This requires an <code class="docutils literal notranslate"><span class="pre">url</span></code>, for example <code class="docutils literal notranslate"><span class="pre">sqlite:///path/to/example.db</span></code>. In this quickstart, we’ll use a in-memory <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> database, so we leave the <code class="docutils literal notranslate"><span class="pre">url</span></code> empty:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus</span> <span class="kn">import</span> <span class="n">init_db</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus</span> <span class="k">import</span> <span class="n">init_db</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">init_db</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -417,16 +416,17 @@ Initializing the database at sqlite://
 Ingesting basic atomic data
 </pre></div></div>
 </div>
-<p>Now, we have a SQLAlchemy <code class="docutils literal notranslate"><span class="pre">Session</span></code> object named <code class="docutils literal notranslate"><span class="pre">session</span></code>. We can use <code class="docutils literal notranslate"><span class="pre">session</span></code> to make simple queries. As you can see from the output, “basic atomic data” has been ingested into our database. Let’s examine it:</p>
+<p>Now, we have a SQLAlchemy <code class="docutils literal notranslate"><span class="pre">Session</span></code> object named <code class="docutils literal notranslate"><span class="pre">session</span></code>. We can use <code class="docutils literal notranslate"><span class="pre">session</span></code> to make simple queries. As you can see from the output, some “basic atomic data” has been ingested into our database. Let’s examine it:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.model</span> <span class="kn">import</span> <span class="n">Atom</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Number of Atoms in the database: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.model</span> <span class="k">import</span> <span class="n">Atom</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of Atoms in the database: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
 <span class="n">si</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Symbol: {}, atomic_number: {}, name: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">si</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">si</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">si</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Symbol: </span><span class="si">{}</span><span class="s2">, atomic_number: </span><span class="si">{}</span><span class="s2">, name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">si</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">si</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">si</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -441,21 +441,22 @@ Symbol: Si, atomic_number: 14, name: Silicon
 </div>
 <p>So, our database already contains basic information about atoms. But this informaition has not been commited to the database yet. It is always <strong>your</strong> responsibility to commit data!</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <p>To store more interesting data we are going to use ingesters. For each data source supported by Carsus there is a corresponding ingester class. For example, let’s ingest atomic weights from the NIST Atomic Weights and Isotopic Compositions database:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.io</span> <span class="kn">import</span> <span class="n">NISTWeightsCompIngester</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.nist</span> <span class="k">import</span> <span class="n">NISTWeightsCompIngester</span>
+
 <span class="n">weightscomp_ingester</span> <span class="o">=</span> <span class="n">NISTWeightsCompIngester</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
 <span class="n">weightscomp_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">()</span>
 <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -467,19 +468,17 @@ Symbol: Si, atomic_number: 14, name: Silicon
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
- found PyQt4 widgets
- using PyQt4 widgets
 Downloading data from the NIST Atomic Weights and Isotopic Compositions database.
 Ingesting atomic weights from nist
 </pre></div></div>
 </div>
 <p>And now atoms have atomic weights:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">print</span> <span class="n">si</span><span class="o">.</span><span class="n">weights</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">si</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -493,64 +492,110 @@ Ingesting atomic weights from nist
 </div>
 <p>Other ingesters are just the same, but they often take specific arguments:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.io</span> <span class="kn">import</span> <span class="n">GFALLIngester</span><span class="p">,</span> <span class="n">NISTIonizationEnergiesIngester</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.nist</span> <span class="k">import</span> <span class="n">NISTIonizationEnergiesIngester</span>
 
 <span class="c1"># Ingest ionization energies and ground levels from the NIST Atomic Spectra Database</span>
 <span class="n">ioniz_energies_ingester</span> <span class="o">=</span> <span class="n">NISTIonizationEnergiesIngester</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">spectra</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">)</span>
-<span class="n">ioniz_energies_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">ionization_energies</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ground_levels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c1"># Ingest levels and lines from the Kurucz Database</span>
-<span class="n">gfall_ingester</span> <span class="o">=</span> <span class="n">GFALLIngester</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;gfall.dat&quot;</span><span class="p">,</span> <span class="n">ions</span><span class="o">=</span><span class="s2">&quot;Si 1-2&quot;</span><span class="p">)</span>
-<span class="n">gfall_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ioniz_energies_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">ionization_energies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ground_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Downloading ionization energies from the NIST Atomic Spectra Database
+Ingesting ionization energies from nist-asd
+Ingesting ground levels from nist-asd
 </pre></div></div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
+<p><strong>IMPRTANT:</strong> it’s necessary ingest NIST ionization energies before using <code class="docutils literal notranslate"><span class="pre">GFALLIngester</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/media/data/projects/tardis/carsus/carsus/io/nist/ionization.py:88: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support skipfooter; you can avoid this warning by specifying engine=&#39;python&#39;.
-  usecols=range(5), names=column_names, skiprows=3, skipfooter=1)
-</pre></div></div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.kurucz</span> <span class="k">import</span> <span class="n">GFALLIngester</span>
+
+<span class="c1"># Ingest levels and lines from the Kurucz line list</span>
+<span class="n">gfall_ingester</span> <span class="o">=</span> <span class="n">GFALLIngester</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;./gfall.dat&quot;</span><span class="p">,</span> <span class="n">ions</span><span class="o">=</span><span class="s2">&quot;Si 1-2&quot;</span><span class="p">)</span>
+<span class="n">gfall_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Ingesting ionization energies from nist-asd
-Ingesting ground levels from nist-asd
+[<span class="ansi-bold">carsus.io.kurucz.gfall</span>][<span class="ansi-yellow-intense-fg ansi-bold">WARNING</span>]  A specific combination to identify unique levels from the gfall data has not been given. Defaulting to [&#34;energy&#34;, &#34;j&#34;]. (<span class="ansi-bold">gfall.py</span>:68)
+[<span class="ansi-bold">carsus.io.kurucz.gfall</span>][<span class="ansi-white-intense-fg ansi-bold">INFO</span>   ]  Parsing GFALL ./gfall.dat (<span class="ansi-bold">gfall.py</span>:116)
 Ingesting levels from ku_latest
 Ingesting levels for Si 1
 Ingesting levels for Si 2
-Ingesting lines from ku_latest
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.chianti_</span> <span class="k">import</span> <span class="n">ChiantiIngester</span>
+
+<span class="c1"># Ingest levels and lines from Chianti database</span>
+<span class="n">chianti_ingester</span> <span class="o">=</span> <span class="n">ChiantiIngester</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">ions</span><span class="o">=</span><span class="s2">&quot;Si 1-2&quot;</span><span class="p">)</span>
+<span class="n">chianti_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ ChiantiPy version 0.8.4
+ found PyQt5 widgets
+ using PyQt5 widgets
+Ingesting levels from chianti_v9.0
+Ingesting levels for Si 1
+Ingesting levels for Si 2
+Ingesting lines from chianti_v9.0
 Ingesting lines for Si 1
 Ingesting lines for Si 2
 </pre></div></div>
 </div>
-<p>Now we have ionization energies, levels and lines for ions of Si (Note: Si 1 = Si II, Si 2 = Si III, etc.). You should <strong>always</strong> use Arabic numerals when specifying ions:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.model</span> <span class="kn">import</span> <span class="n">Ion</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.zeta</span> <span class="k">import</span> <span class="n">KnoxLongZetaIngester</span>
+
+<span class="c1"># Ingest Knox Long&#39;s zeta data</span>
+<span class="n">zeta_ingester</span> <span class="o">=</span> <span class="n">KnoxLongZetaIngester</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="s1">&#39;./carsus/data/knox_long_recombination_zeta.dat&#39;</span><span class="p">)</span>
+<span class="n">zeta_ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">()</span>
+<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Now we have ionization energies, levels and lines for ions of Si (Note: Si 1 = Si II, Si 2 = Si III, etc.). You should <strong>always</strong> use arabic numerals when specifying ions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.model</span> <span class="k">import</span> <span class="n">Ion</span>
+
 <span class="n">si_1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Ion</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="mi">14</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">si_1</span><span class="o">.</span><span class="n">levels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">si_1</span><span class="o">.</span><span class="n">levels</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -559,31 +604,31 @@ Ingesting lines for Si 2
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-166
+190
 </pre></div></div>
 </div>
-<p>This is it! Now you can explore the data you have in your database or create output hdf files.</p>
+<p>This is it! Now you can explore the your database or create output HDF5 files.</p>
 </div>
-<div class="section" id="Creating-output-HDFStores">
-<h2>Creating output HDFStores<a class="headerlink" href="#Creating-output-HDFStores" title="Permalink to this headline">¶</a></h2>
-<p>Once you have a database it is very easy to create atomic data files for TARDIS. To do this you need to use a special class called <code class="docutils literal notranslate"><span class="pre">AtomData</span></code>. The class takes <code class="docutils literal notranslate"><span class="pre">session</span></code> as its first argument; other important parameters are <code class="docutils literal notranslate"><span class="pre">selected_atoms</span></code> and <code class="docutils literal notranslate"><span class="pre">chianti_ions</span></code>. Only data for <code class="docutils literal notranslate"><span class="pre">selected_atoms</span></code> will be stored in the output DataFrames and levels and lines for <code class="docutils literal notranslate"><span class="pre">chianti_ions</span></code> will be taken from the data source with the same name. Let’s create an <code class="docutils literal notranslate"><span class="pre">AtomData</span></code> instance:</p>
+<div class="section" id="Creating-output-HDF5-files">
+<h2>Creating output HDF5 files<a class="headerlink" href="#Creating-output-HDF5-files" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a database it is very easy to create atomic data files for TARDIS. To do this, you need to use a special class called <code class="docutils literal notranslate"><span class="pre">AtomData</span></code>. The class takes <code class="docutils literal notranslate"><span class="pre">session</span></code> as its first argument; other important parameters are <code class="docutils literal notranslate"><span class="pre">selected_atoms</span></code> and <code class="docutils literal notranslate"><span class="pre">chianti_ions</span></code>. Only data for <code class="docutils literal notranslate"><span class="pre">selected_atoms</span></code> will be stored in the output DataFrames and levels and lines for <code class="docutils literal notranslate"><span class="pre">chianti_ions</span></code> will be taken from the data source with the same name. Let’s create an <code class="docutils literal notranslate"><span class="pre">AtomData</span></code> instance:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.io</span> <span class="kn">import</span> <span class="n">AtomData</span>
-<span class="n">atom_data</span> <span class="o">=</span> <span class="n">AtomData</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">selected_atoms</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.output</span> <span class="k">import</span> <span class="n">AtomData</span>
+<span class="n">atom_data</span> <span class="o">=</span> <span class="n">AtomData</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">selected_atoms</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">,</span> <span class="n">chianti_short_name</span><span class="o">=</span><span class="s1">&#39;chianti_v9.0&#39;</span><span class="p">,</span> <span class="n">chianti_ions</span><span class="o">=</span><span class="s2">&quot;Si 1-2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>The output DataFrames can be easily accessed as “prepared” attributes of <code class="docutils literal notranslate"><span class="pre">atom_data</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">print</span> <span class="n">atom_data</span><span class="o">.</span><span class="n">atom_masses_prepared</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">atom_data</span><span class="o">.</span><span class="n">atom_masses_prepared</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -592,17 +637,17 @@ Ingesting lines for Si 2
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-              symbol     name    mass
+              symbol        name    mass
 atomic_number
-14                Si  Silicon  28.085
+14             b&#39;Si&#39;  b&#39;Silicon&#39;  28.085
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">print</span> <span class="n">atom_data</span><span class="o">.</span><span class="n">levels_prepared</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">atom_data</span><span class="o">.</span><span class="n">levels_prepared</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -611,26 +656,36 @@ atomic_number
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-    atomic_number  ion_number  level_number    energy  g  metastable
-0              14           0             0  0.000000  1        True
-1              14           1             0  0.000000  2        True
-2              14           1             1  0.035613  4        True
-3              14           1             2  5.309535  2        True
-4              14           1             3  5.322966  4        True
-5              14           1             4  5.344699  6        True
-6              14           1             5  6.857485  4       False
-7              14           1             6  6.859448  6       False
-8              14           1             7  8.121023  2       False
-9              14           1             8  9.505292  2       False
-10             14           1             9  9.836720  4       False
+                                          energy  g  metastable
+atomic_number ion_number level_number
+14            0          0              0.000000  1        True
+              1          0              0.000000  2        True
+                         1              0.035613  4        True
+                         2              5.309535  2        True
+                         3              5.322966  4        True
+                         4              5.344700  6        True
+                         5              6.857485  4       False
+                         6              6.859448  6       False
+                         7              8.121023  2       False
+                         8              9.505292  2       False
+                         9              9.836720  4       False
+                         10             9.838768  6       False
+                         11            10.066443  2       False
+                         12            10.073880  4       False
+                         13            10.390118  2       False
+                         14            10.415201  4       False
+                         15            12.146991  2       False
+                         16            12.525262  4       False
+                         17            12.525423  6       False
+                         18            12.839311  8       False
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">print</span> <span class="n">atom_data</span><span class="o">.</span><span class="n">macro_atom_prepared</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">atom_data</span><span class="o">.</span><span class="n">macro_atom_prepared</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -640,40 +695,58 @@ atomic_number
 <div class="output_area docutils container">
 <div class="highlight"><pre>
     atomic_number  ion_number  source_level_number  destination_level_number  \
-0              14           1                    0                        71
-1              14           1                    0                        66
-2              14           1                    0                        57
-3              14           1                    0                        56
-4              14           1                    0                        46
-5              14           1                    0                        45
-6              14           1                    0                        30
-7              14           1                    0                        29
-8              14           1                    0                        21
-9              14           1                    0                        20
-10             14           1                    0                        18
+0              14           1                    0                         5
+1              14           1                    0                         7
+2              14           1                    0                         8
+3              14           1                    0                         9
+4              14           1                    0                        13
+5              14           1                    0                        14
+6              14           1                    0                        15
+7              14           1                    0                        16
+8              14           1                    0                        24
+9              14           1                    0                        25
+10             14           1                    1                         7
+11             14           1                    1                         8
+12             14           1                    1                         9
+13             14           1                    1                        13
+14             14           1                    1                        14
+15             14           1                    1                        15
+16             14           1                    1                        16
+17             14           1                    1                        24
+18             14           1                    1                        25
+19             14           1                    1                         6
 
     transition_type  transition_probability  transition_line_id
-0                 1                     0.0                   9
-1                 1                     0.0                  10
-2                 1                     0.0                  14
-3                 1                     0.0                  19
-4                 1                     0.0                  24
-5                 1                     0.0                  27
-6                 1                     0.0                  29
-7                 1                     0.0                  32
-8                 1                     0.0                  56
-9                 1                     0.0                  62
-10                1                     0.0                  76
+0                 1            0.000000e+00                   4
+1                 1            0.000000e+00                   5
+2                 1            0.000000e+00                   6
+3                 1            0.000000e+00                   7
+4                 1            0.000000e+00                   8
+5                 1            0.000000e+00                   9
+6                 1            0.000000e+00                  10
+7                 1            0.000000e+00                  11
+8                 1            0.000000e+00                  12
+9                 1            0.000000e+00                  13
+10                1            3.573898e+08                  19
+11                1            1.898953e+08                  20
+12                1            2.517380e+08                  21
+13                1            3.241519e+08                  23
+14                1            1.582578e+09                  24
+15                1            2.789657e+07                  25
+16                1            3.114504e+07                  26
+17                1            8.794534e+06                  28
+18                1            6.684619e+06                  29
+19                1            6.417095e+06                  18
 </pre></div></div>
 </div>
-<p>To create an HDFStore you need to use the <code class="docutils literal notranslate"><span class="pre">to_hdf()</span></code> method. You should specify every DataFrame that you want to be stored:</p>
+<p>To create an HDF5 file you need to use the <code class="docutils literal notranslate"><span class="pre">to_hdf()</span></code> method. You should specify every DataFrame that you want to store:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">atom_data</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s2">&quot;example_store.h5&quot;</span><span class="p">,</span> <span class="n">store_atom_masses</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">store_ionization_energies</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                <span class="n">store_levels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">store_lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">store_macro_atom</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">atom_data</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s2">&quot;example_store.h5&quot;</span><span class="p">,</span> <span class="n">store_atom_masses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">store_ionization_energies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">store_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">store_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">store_macro_atom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">store_zeta_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -682,10 +755,12 @@ atomic_number
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Signing AtomData with MD5 and UUID1
+Signing AtomData:
+MD5: 444891792f77d8977cc1b632c5b0322f
+UUID1: 7e20522ca39011e98329c83dd46c2c53
 </pre></div></div>
 </div>
-<p>You are done! Now you can use the created HDFStore to run TARDIS simulations.</p>
+<p>You are done! Now you can use the created HDF5 atomic file to run TARDIS simulations!</p>
 </div>
 </div>
 
