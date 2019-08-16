@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NIST Atomic Weights and Isotopic Compositions &mdash; Carsus v</title>
+  <title>Atomic Weights and Isotopic Compositions &mdash; Carsus v</title>
   
 
   
@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cmfgen/index.html">CMFGEN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kurucz/index.html">Kurucz Dataset</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">NIST</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">NIST Atomic Weights and Isotopic Compositions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Atomic Weights and Isotopic Compositions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../zeta/index.html">Knox Long’s recombination zeta</a></li>
@@ -150,7 +150,7 @@
         
           <li><a href="index.html">NIST</a> &raquo;</li>
         
-      <li>NIST Atomic Weights and Isotopic Compositions</li>
+      <li>Atomic Weights and Isotopic Compositions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -391,48 +391,26 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="NIST-Atomic-Weights-and-Isotopic-Compositions">
-<h1>NIST Atomic Weights and Isotopic Compositions<a class="headerlink" href="#NIST-Atomic-Weights-and-Isotopic-Compositions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Atomic-Weights-and-Isotopic-Compositions">
+<h1>Atomic Weights and Isotopic Compositions<a class="headerlink" href="#Atomic-Weights-and-Isotopic-Compositions" title="Permalink to this headline">¶</a></h1>
 <p>This <a class="reference external" href="http://www.nist.gov/pml/data/comp.cfm">database</a> provides atomic weights for elements 1 through 118 and isotopic compositions (abundances). Look <a class="reference external" href="http://nist.gov/pml/data/comp-notes.cfm#comp">here</a> for the detailed description.</p>
-<p>Initialize a database. In this document we’ll be using a memory database as an example.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus</span> <span class="kn">import</span> <span class="n">init_db</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">init_db</span><span class="p">(</span><span class="s2">&quot;sqlite://&quot;</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Initializing the database
-Ingesting basic atomic data
-</pre></div></div>
-</div>
-<p>Create an ingester</p>
+<p>Import the <code class="docutils literal notranslate"><span class="pre">NISTWeightsComp</span></code> and <code class="docutils literal notranslate"><span class="pre">NISTIonizationEnergies</span></code> classes.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.io.nist</span> <span class="kn">import</span> <span class="n">NISTWeightsCompIngester</span>
-<span class="n">ingester</span> <span class="o">=</span> <span class="n">NISTWeightsCompIngester</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">carsus.io.nist</span> <span class="k">import</span> <span class="n">NISTWeightsComp</span><span class="p">,</span> <span class="n">NISTIonizationEnergies</span>
 </pre></div>
 </div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">download()</span></code> to download the data from the source. With the default arguments, only the data for the most common isotopes will be downloaded.</p>
+<p>Initialize classes passing the selected atoms as arguments.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ingester</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_weights</span> <span class="o">=</span> <span class="n">NISTWeightsComp</span><span class="p">(</span><span class="s1">&#39;H-Ne&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -441,17 +419,15 @@ Ingesting basic atomic data
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Downloading the data from http://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl
+Downloading data from the NIST Atomic Weights and Isotopic Compositions database.
 </pre></div></div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">ingest()</span></code> to persist the data into the database. Don’t forget to commit the session!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ingester</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_ioniz</span> <span class="o">=</span> <span class="n">NISTIonizationEnergies</span><span class="p">(</span><span class="s1">&#39;H-Ne&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -460,61 +436,214 @@ Downloading the data from http://physics.nist.gov/cgi-bin/Compositions/stand_alo
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Ingesting atomic weights
+Downloading ionization energies from the NIST Atomic Spectra Database
 </pre></div></div>
 </div>
-<p>Now you have the data in your database. Currently only atomic weights are supported in <code class="docutils literal notranslate"><span class="pre">carsus</span></code>. To get them you can use this query:</p>
+<p>Data is stored in the <code class="docutils literal notranslate"><span class="pre">base</span></code> attribute.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">carsus.model</span> <span class="kn">import</span> <span class="n">Atom</span><span class="p">,</span> <span class="n">AtomicWeight</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Atom</span><span class="p">,</span> <span class="n">AtomicWeight</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Atom</span><span class="o">.</span><span class="n">quantities</span><span class="o">.</span><span class="n">of_type</span><span class="p">(</span><span class="n">AtomicWeight</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">atom</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">q</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
-    <span class="k">print</span> <span class="s2">&quot;symbol: {}, atomic number: {}, weight: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">weight</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_weights</span><span class="o">.</span><span class="n">base</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-symbol: H, atomic number: 1, weight: 1.007975 u
-symbol: He, atomic number: 2, weight: 4.002602 u
-symbol: Li, atomic number: 3, weight: 6.9675 u
-symbol: Be, atomic number: 4, weight: 9.0121831 u
-symbol: B, atomic number: 5, weight: 10.8135 u
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>mass</th>
+    </tr>
+    <tr>
+      <th>atomic_number</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>Hydrogen</td>
+      <td>1.007975</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>He</td>
+      <td>Helium</td>
+      <td>4.002602</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Li</td>
+      <td>Lithium</td>
+      <td>6.967500</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Be</td>
+      <td>Beryllium</td>
+      <td>9.012183</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>Boron</td>
+      <td>10.813500</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C</td>
+      <td>Carbon</td>
+      <td>12.010600</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>N</td>
+      <td>Nitrogen</td>
+      <td>14.006855</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>O</td>
+      <td>Oxygen</td>
+      <td>15.999400</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>F</td>
+      <td>Fluorine</td>
+      <td>18.998403</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ne</td>
+      <td>Neon</td>
+      <td>20.179700</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
-<p>You can also convert quanities to different units in queries:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Atom</span><span class="p">,</span> <span class="n">AtomicWeight</span><span class="o">.</span><span class="n">quantity</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span>\
-    <span class="n">join</span><span class="p">(</span><span class="n">Atom</span><span class="o">.</span><span class="n">quantities</span><span class="o">.</span><span class="n">of_type</span><span class="p">(</span><span class="n">AtomicWeight</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">atom</span><span class="p">,</span> <span class="n">weight_value</span> <span class="ow">in</span> <span class="n">q</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
-    <span class="k">print</span> <span class="s2">&quot;symbol: {}, atomic number: {}, weight: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">weight_value</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_ioniz</span><span class="o">.</span><span class="n">base</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-symbol: H, atomic number: 1, weight: 1.67378149613e-27 kg
-symbol: He, atomic number: 2, weight: 6.6464755217e-27 kg
-symbol: Li, atomic number: 3, weight: 1.15698033922e-26 kg
-symbol: Be, atomic number: 4, weight: 1.4965078809e-26 kg
-symbol: B, atomic number: 5, weight: 1.79562352324e-26 kg
-</pre></div></div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>atomic_number  ion_number
+1              1               13.598434
+2              1               24.587389
+               2               54.417765
+3              1                5.391715
+               2               75.640096
+               3              122.454358
+4              1                9.322699
+               2               18.211150
+               3              153.896203
+               4              217.718584
+5              1                8.298019
+               2               25.154830
+               3               37.930580
+               4              259.371500
+               5              340.226020
+6              1               11.260288
+               2               24.383154
+               3               47.887780
+               4               64.493520
+               5              392.090515
+               6              489.993194
+7              1               14.534130
+               2               29.601250
+               3               47.445300
+               4               77.473500
+               5               97.890100
+               6              552.067320
+               7              667.046116
+8              1               13.618055
+               2               35.121120
+               3               54.935540
+               4               77.413500
+               5              113.899000
+               6              138.118900
+               7              739.326820
+               8              871.409880
+9              1               17.422820
+               2               34.970810
+               3               62.707980
+               4               87.175000
+               5              114.249000
+               6              157.163110
+               7              185.186800
+               8              953.898040
+               9             1103.117470
+10             1               21.564540
+               2               40.962970
+               3               63.423300
+               4               97.190000
+               5              126.247000
+               6              157.934000
+               7              207.271000
+               8              239.097000
+               9             1195.807830
+               10            1362.199150
+Name: ionization_energy, dtype: float64
+</pre></div>
 </div>
 </div>
+<p>Dump the data with the <code class="docutils literal notranslate"><span class="pre">to_hdf</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_weights</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s1">&#39;test.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nist_ioniz</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s1">&#39;test.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script></div>
 
 
            </div>
