@@ -27,6 +27,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
@@ -40,7 +41,7 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Creating the tardis_example database" href="notebooks/kurucz_chianti_h_he.html" />
+    <link rel="next" title="Creating a TARDIS atomic file" href="notebooks/tardis_atomic_file.html" />
     <link rel="prev" title="Database Models in carsus" href="model.html" /> 
 </head>
 
@@ -91,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">Reference/API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">Database Models in carsus</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Macro Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/kurucz_chianti_h_he.html">Creating the tardis_example database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tardis_atomic_file.html">Creating a TARDIS atomic file</a></li>
 </ul>
 
             
@@ -182,10 +183,10 @@
 </style>
 <div class="section" id="macro-atom">
 <h1>Macro Atom<a class="headerlink" href="#macro-atom" title="Permalink to this headline">¶</a></h1>
-<p>The macro atom is described in detail in <span id="id1">[2002A&amp;A…384..725L]</span>. The basic principal is that when an energy packet
+<p>The macro atom is described in detail in <span class="bibtex" id="id1">[2002A&amp;A…384..725L]</span>. The basic principal is that when an energy packet
 is absorbed that the macro atom is on a certain level. Three probabilities govern the next step the P<sub>up</sub>,
 P<sub>down</sub> and P<sub>down emission</sub> being the probability for going to a higher level, a lower level and a lower
-level and emitting a photon while doing this respectively (see Figure 1 in <span id="id2">[2002A&amp;A…384..725L]</span> ).</p>
+level and emitting a photon while doing this respectively (see Figure 1 in <span class="bibtex" id="id2">[2002A&amp;A…384..725L]</span> ).</p>
 <p>The macro atom is the most complex idea to implement as a data structure. The setup is done in <cite>~tardisatomic</cite>, but
 we will nonetheless discuss it here (as <cite>~tardisatomic</cite> is even less documented than this one).</p>
 <p>For each level we look at the line list to see what transitions (upwards or downwards are possible). We create a two arrays,
@@ -220,8 +221,8 @@ part of each set contains the upwards probabilities (internal upward), the secon
 </tbody>
 </table>
 <p>We now will calculate the transition probabilites, using the radiative rates in Equation 20, 21, and 22
-in <span id="id3">[2002A&amp;A…384..725L]</span>. Then we calculate the downward emission probability from Equation 5, the downward and
-upward internal transition probabilities in <span id="id4">[2003A&amp;A…403..261L]</span>.</p>
+in <span class="bibtex" id="id3">[2002A&amp;A…384..725L]</span>. Then we calculate the downward emission probability from Equation 5, the downward and
+upward internal transition probabilities in <span class="bibtex" id="id4">[2003A&amp;A…403..261L]</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}p_\textrm{emission down}&amp;= {\cal R}_{\textrm{i}\rightarrow\textrm{lower}}\,(\epsilon_\textrm{upper} - \epsilon_\textrm{lower}) / {\cal D}_{i}\\
 p_\textrm{internal down}&amp;= {\cal R}_{\textrm{i}\rightarrow\textrm{lower}}\,\epsilon_\textrm{lower}/{\cal D}_{i}\\,
@@ -232,7 +233,7 @@ p_\textrm{internal up}&amp;={\cal R}_{\textrm{i}\rightarrow\textrm{upper}}\,\eps
 </dl>
 <p>We ignore the probability to emit a k-packet as TARDIS only works with photon packets.
 Next we calculate the radidative
-rates using equation 10 in <span id="id5">[2003A&amp;A…403..261L]</span>.</p>
+rates using equation 10 in <span class="bibtex" id="id5">[2003A&amp;A…403..261L]</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\cal R}_{\textrm{upper}\rightarrow\textrm{lower}} &amp;=
 A_{\textrm{upper}\rightarrow\textrm{lower}}\beta_\textrm{Sobolev}n_\textrm{upper}\\
@@ -302,7 +303,7 @@ p_\textrm{internal up} &amp;= \underbrace{\frac{1}{h\nu} f_{\textrm{i}\rightarro
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="notebooks/kurucz_chianti_h_he.html" class="btn btn-neutral float-right" title="Creating the tardis_example database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="notebooks/tardis_atomic_file.html" class="btn btn-neutral float-right" title="Creating a TARDIS atomic file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="model.html" class="btn btn-neutral float-left" title="Database Models in carsus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
